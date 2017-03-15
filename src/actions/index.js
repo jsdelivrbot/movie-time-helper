@@ -6,7 +6,7 @@ export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const GET_MOVIE_LIST = 'GET_MOVIE_LIST';
 
-const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
+const ROOT_URL = 'https://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=asdasddd123232131233';
 
 const MOVIE_ROOT_URL = 'http://www.omdbapi.com/?';
