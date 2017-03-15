@@ -5,11 +5,28 @@
   "main": "index.js",
   "repository": "git@github.com:zjacek12/movie-time-helper.git",
   "scripts": {
-  	"heroku-postbuild": "npm run start",
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run serve-prod; else npm run serve-dev; fi",
+    "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build; fi",
+    "build": "NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --colors -p",
+    "serve-dev": "NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "serve-prod": "NODE_ENV=production node ./node_modules/webpack-prod-server/bin/webpack-prod-server.js",
+    "pagespeed": "./node_modules/scripts/pagespeed",
+    "setup": "NODE_ENV=initialisation ./node_modules/scripts/init",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint . --ignore-path .gitignore",
+    "lint:js:staged": "eslint-staged",
+    "lint:css": "stylelint ./app/**/*.css",
+    "lint:css:staged": "stylelint-staged",
+    "lint:staged": "npm run lint:js:staged && npm run lint:css:staged"
   },
+
+  //"scripts": {
+  //  "heroku-prebuild": "npm run start",
+  //	"heroku-postbuild": "npm run start",
+  //  "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+  //  "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+  //  "test:watch": "npm run test -- --watch"
+  //},
   "author": "",
   "license": "ISC",
   "devDependencies": {
