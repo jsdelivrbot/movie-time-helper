@@ -19,14 +19,6 @@
     "lint:css:staged": "stylelint-staged",
     "lint:staged": "npm run lint:js:staged && npm run lint:css:staged"
   },
-
-  //"scripts": {
-  //  "heroku-prebuild": "npm run start",
-  //	"heroku-postbuild": "npm run start",
-  //  "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-  //  "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-  //  "test:watch": "npm run test -- --watch"
-  //},
   "author": "",
   "license": "ISC",
   "devDependencies": {
