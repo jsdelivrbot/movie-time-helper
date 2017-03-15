@@ -1,25 +1,31 @@
-# ReduxSimpleStarter
+# redux-starter
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+**NOTE:** Please check out [redux-starter-v2](https://github.com/marcgarreau/redux-starter-v2), which uses `create-react-app`
+as its foundation. This repo is not actively maintained. Now back to your regularly scheduled entertainment...
 
-###Getting Started###
+---
 
-There are two methods for getting started with this repo.
+Many of the choices made in this starter app are documented in this [blog post](https://quickleft.com/blog/redux-in-plain-english-building-boilerplate/).
 
-####Familiar with Git?#####
-Checkout this repo, install dependencies, then start the gulp process with the following:
+Looking to learn Redux? I walk through an example workflow [here](https://quickleft.com/blog/redux-plain-english-workflow/).
 
-```
-	> git clone git@github.com:StephenGrider/ReduxSimpleStarter.git
-	> cd ReduxSimpleStarter
-	> npm install
-	> npm start
-```
+### Installation
+- Clone this repo.
+- Run `npm install` to install dependencies.
+- Run `npm start` to start the dev server and visit `http://localhost:5000` to see the app.
 
-####Not Familiar with Git?#####
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+Note: `Ctrl + H` hides the Redux DevTools, `Ctrl + W` changes its position on the screen.
 
-```
-	> npm install
-	> npm start
-```
+### Technologies
+This starter app includes my choice configuration for:
+- React + Redux
+- Routing: react-router + react-router-redux
+- Tooling: webpack, babel, eslint, karma, hot loading, redux-devtools
+- Testing: mocha, expect, enzyme
+
+### Deployment
+This app is ready for deployment on Heroku. After creating a project on Heroku,
+configure the remote destination with: `heroku git:remote -a <project-name>`,
+then `git push heroku master` your way to glory.
+
+An example deployment lives at https://redux-starter.herokuapp.com/.
