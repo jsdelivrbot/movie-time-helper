@@ -9,6 +9,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/'
   },
+  node: {
+    fs: "empty"
+  },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
@@ -51,4 +54,5 @@ module.exports = {
       }
     ]
   }
+  
 }

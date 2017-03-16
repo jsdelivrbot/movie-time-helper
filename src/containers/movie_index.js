@@ -51,9 +51,6 @@ class MovieIndex extends Component {
 					{this.props.movies.map(this.renderPosts)}
 				</tbody>
 			</table>
-			 <ul className="list-group">
-			 	{this.renderPosts()}
-			 </ul>
 			</div>
 		);
 	}

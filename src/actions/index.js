@@ -1,4 +1,6 @@
 import axios from 'axios';
+import omdb from 'omdbapi';
+import _ from 'lodash';
 
 export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const CREATE_MOVIE = 'CREATE_MOVIE';
@@ -7,15 +9,13 @@ export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const GET_MOVIE_LIST = 'GET_MOVIE_LIST';
 
 const ROOT_URL = 'https://reduxblog.herokuapp.com/api';
-const API_KEY = '?key=asdasddd123232131233';
-
-const MOVIE_ROOT_URL = 'http://www.omdbapi.com/?';
-const MOVIE_API_KEY = 'apikey=[7e64b825]&';
+const API_KEY = '?key=asdasddd123asd123';
 
 export function getMovieList(term){
-	const request = axios.get(`${MOVIE_ROOT_URL}${MOVIE_API_KEY}s=${term}`);
-	console.log('this is a getMovieList request:', request)
-
+	const request = omdb.search({
+    search: term 
+  });
+  console.log(request, 'searchterm',term);
 	return {
 		type: GET_MOVIE_LIST,
 		payload: request

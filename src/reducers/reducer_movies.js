@@ -5,11 +5,11 @@ const initialState = { all: [], movie: null, search: null };
 export default function(state = initialState, action) {
 	switch(action.type) {
 	case GET_MOVIE_LIST:
-	console.log(action.payload.data.Search);
+	console.log('this is after promise',action.payload);
 		return {
 			all: state.all,
 			movie: null,
-			search: action.payload.data.Search
+			search: action.payload
 		};
 	case FETCH_MOVIE:
 		return {

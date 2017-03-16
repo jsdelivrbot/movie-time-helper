@@ -10,6 +10,7 @@ class SearchResults extends Component {
 				<td><img src={movieData.Poster} /></td>
 				<td>{movieData.Title}</td>
 				<td>{movieData.Year}</td>
+				<td> X </td>
 			</tr>
 		);
 	}
@@ -27,10 +28,10 @@ class SearchResults extends Component {
 								<th>Movie Poster</th>
 								<th>Movie Title</th>
 								<th>Year Created</th>
+								<th> X </th>
 							</tr>
 						</thead>
 						<tbody>
-							{console.log(this.props.movies)}
 							{this.props.movies.map(this.renderPosts)}
 						</tbody>
 					</table>

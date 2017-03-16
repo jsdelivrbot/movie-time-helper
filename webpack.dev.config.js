@@ -7,6 +7,9 @@ module.exports = {
     'webpack-hot-middleware/client',
     './src/index'
   ],
+  node: {
+    fs: "empty"
+  },
   module: {
     preLoaders: [
       {
@@ -70,5 +73,5 @@ module.exports = {
     'cheerio': 'window',
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true
-  }
+  }  
 }

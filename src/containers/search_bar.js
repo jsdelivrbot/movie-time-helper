@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovieList } from '../actions/index';
 
-class Search extends Component {
+class SearchBar extends Component {
 	constructor(props) {
 		super(props);
 
@@ -45,4 +45,4 @@ class Search extends Component {
 	}
 }
 
-export default connect(null, { getMovieList })(Search);
+export default connect(null, { getMovieList })(SearchBar);
