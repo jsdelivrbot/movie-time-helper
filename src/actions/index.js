@@ -1,15 +1,12 @@
 import axios from 'axios';
 import omdb from 'omdbapi';
-import _ from 'lodash';
 
 export const FETCH_MOVIES = 'FETCH_MOVIES';
-export const CREATE_MOVIE = 'CREATE_MOVIE';
+export const LOG_MOVIE = 'LOG_MOVIE';
 export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const GET_MOVIE_LIST = 'GET_MOVIE_LIST';
 
-const ROOT_URL = 'https://reduxblog.herokuapp.com/api';
-const API_KEY = '?key=asdasddd123asd123';
 
 export function getMovieList(term){
 	const request = omdb.search({
@@ -23,8 +20,7 @@ export function getMovieList(term){
 }
 
 export function fetchMovies() {
-	const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-	console.log('this is a fetchMovies request:', request)
+	const request = null;
 
 	return {
 		type: FETCH_MOVIES,
@@ -33,16 +29,16 @@ export function fetchMovies() {
 }
 
 export function createMovie(props) {
-	const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, props);
+	const request = props;
 
 	return {
-		type: CREATE_MOVIE,
+		type: LOG_MOVIE,
 		payload: request
 	};
 }
 
 export function fetchMovie(id) {
-	const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+	const request = id;
 
 	return {
 		type: FETCH_MOVIE,
@@ -51,7 +47,7 @@ export function fetchMovie(id) {
 }
 
 export function deleteMovie(id) {
-	const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
+	const request = id;
 
 	return {
 		type: DELETE_MOVIE,

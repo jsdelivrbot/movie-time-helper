@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { createMovie } from '../actions/index';
 
 class SearchResults extends Component {
+
+	handleClick(data) {
+		console.log(data);
+		this.props.createMovie(data);
+	}
 
 	renderPosts(movieData) {
 		return (
@@ -10,7 +16,6 @@ class SearchResults extends Component {
 				<td><img src={movieData.Poster} /></td>
 				<td>{movieData.Title}</td>
 				<td>{movieData.Year}</td>
-				<td> X </td>
 			</tr>
 		);
 	}
@@ -28,11 +33,10 @@ class SearchResults extends Component {
 								<th>Movie Poster</th>
 								<th>Movie Title</th>
 								<th>Year Created</th>
-								<th> X </th>
 							</tr>
 						</thead>
 						<tbody>
-							{this.props.movies.map(this.renderPosts)}
+							{this.props.movies.map(this.renderPosts.bind(this))}
 						</tbody>
 					</table>
 				</div>
@@ -44,4 +48,4 @@ function mapStateToProps(state) {
 	return {movies: state.movies.search}
 }
 
-export default connect(mapStateToProps)(SearchResults);
+export default connect(mapStateToProps, { createMovie })(SearchResults);
