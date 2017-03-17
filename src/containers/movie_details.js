@@ -32,24 +32,29 @@ class MovieDetails extends Component {
 				<table className="table table-hover">
 						<tbody>
 						<tr>
-							<td key={this.props.movie.imdbID}> 
-							<ul className="list-group">
-							{console.log(this.props.movie.Director)}
-									<li key={this.props.movie.Title}>Title: {this.props.movie.Title} </li>
-									<li key={this.props.movie.Director}>Director(s): {this.props.movie.Director.map((x) => <text>{x}, </text>)} </li>
-									
-									<li key={this.props.movie.Genre}>Genre: {this.props.movie.Genre.map((x) => <text>{x}, </text>)} </li>
-								
-									<li key={this.props.movie.imdbRating}>IMDB Rating: {this.props.movie.imdbRating} </li>
-								</ul>
+							<td> 
 								<img src={this.props.movie.Poster} />
+							</td>
+							<td>
+								<div>Title: {this.props.movie.Title}</div>
+								<div>Genre: {this.props.movie.Genre.map((x, index) => <text key={index}> {x}, </text>)}</div>
+								<div>Director(s): {this.props.movie.Director.map((x, index) => <text key={index}> {x}, </text>)}</div>	
+								<div>IMDB Rating: {this.props.movie.imdbRating}</div>
+							</td>
+						</tr>
+						</tbody>
+				</table>
+				<table>
+					<tbody>
+						<tr>
+							<td>
 								<h1>Plot: </h1>
 									<p>
 									{this.props.movie.Plot}
 									</p>
 							</td>
 						</tr>
-						</tbody>
+					</tbody>
 				</table>
 			</div>
 		);
