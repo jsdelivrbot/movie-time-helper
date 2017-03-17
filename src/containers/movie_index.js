@@ -23,7 +23,7 @@ class MovieIndex extends Component {
 			return (
 				<div>
 				<div className="text-xs-right">
-			 		<Link to="search/" className="btn btn-primary">
+			 		<Link to="search" className="btn btn-primary">
 			 			Search
 			 		</Link>
 			 	</div>

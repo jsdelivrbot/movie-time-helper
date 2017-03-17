@@ -12,11 +12,14 @@ class SearchResults extends Component {
 
 	renderPosts(movieData) {
 		return (
-			<tr key={movieData.imdbID}>
-				<td><img src={movieData.Poster} /></td>
-				<td>{movieData.Title}</td>
-				<td>{movieData.Year}</td>
-			</tr>
+			
+				<tr key={movieData.imdbID}>
+					<td><img src={movieData.Poster} /></td>
+					<td>{movieData.Title}</td>
+					<td>{movieData.Year}</td>
+					<td><Link to={"search/" + movieData.imdbID}> Details </Link></td>
+				</tr>
+			
 		);
 	}
 
@@ -33,6 +36,7 @@ class SearchResults extends Component {
 								<th>Movie Poster</th>
 								<th>Movie Title</th>
 								<th>Year Created</th>
+								<th>Details</th>
 							</tr>
 						</thead>
 						<tbody>
