@@ -27,7 +27,8 @@ class MovieDetails extends Component {
 
 		return (
 			<div>
-				<Link to="/">Back To Home</Link>
+				<Link to="/" className="btn pull-xs-left">Back To Home</Link>
+				<Link to="/search" className="btn center">Back To Search</Link>
 				<button className="btn btn-primary pull-xs-right"
 					onClick={this.onSaveClick.bind(this)}>
 					Save Movie
