@@ -5,14 +5,8 @@ import { createMovie } from '../actions/index';
 
 class SearchResults extends Component {
 
-	handleClick(data) {
-		console.log(data);
-		this.props.createMovie(data);
-	}
-
 	renderPosts(movieData) {
 		return (
-			
 				<tr key={movieData.imdbID}>
 					<td><img src={movieData.Poster} /></td>
 					<td>{movieData.Title}</td>

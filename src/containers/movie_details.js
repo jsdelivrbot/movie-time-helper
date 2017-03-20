@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getMovie } from '../actions/index';
+import { getMovie, createMovie } from '../actions/index';
 import { Link } from 'react-router';
 
 class MovieDetails extends Component {
@@ -15,6 +15,11 @@ class MovieDetails extends Component {
 	//		});
 	//}
 
+	onSaveClick() {
+		console.log(this.props.movie.imdbID);
+		this.props.createMovie(this.props.movie.imdbID);
+	}
+
 	render() {
 		if(!this.props.movie) {
 			return <div>Loading...</div>;
@@ -23,7 +28,11 @@ class MovieDetails extends Component {
 		return (
 			<div>
 				<Link to="/">Back To Home</Link>
-				{//<button 
+				<button className="btn btn-primary pull-xs-right"
+					onClick={this.onSaveClick.bind(this)}>
+					Save Movie
+				</button>
+				{//<button> 
 				//	className="btn btn-danger pull-xs-right"
 				//	onClick={this.onDeleteClick.bind(this)}>
 				//	Delete Post
@@ -65,4 +74,4 @@ function mapStateToProps(state){
 	return { movie: state.movies.movie };
 }
 
-export default connect(mapStateToProps, { getMovie })(MovieDetails);
+export default connect(mapStateToProps, { getMovie, createMovie })(MovieDetails);

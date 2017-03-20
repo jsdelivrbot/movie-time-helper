@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMovies } from '../actions/index';
+import { getMovie } from '../actions/index';
 import { Link } from 'react-router';
 
 class MovieIndex extends Component {
-	componentWillMount() {
-		this.props.fetchMovies();
-	}  
+	generateMovie(id) {
+		console.log(id);
+		console.log(this.props.getMovie(id));
+		this.props.getMovie(id);
+	}
 
-	renderPosts(movieData) {
+	renderPosts(movieData, index) {
 		return (
-			<tr key={movieData.imdbID}>
+			<tr key={movieData.imdbID + index}>
 				<td><img src={movieData.Poster} /></td>
-				<td>{movieData.Genre}</td>
+				<td>{movieData.Genre.map((x) => <text>{x}, </text>)}</td>
 				<td>{movieData.Plot}</td>
 			</tr>
-		);
+		); 
 	}
 
 	render() {
-		if(!!!this.props.movies.length){
+		console.log(this.props.movies.length);
+		if(this.props.movies.length == 0){
 			return (
 				<div>
 				<div className="text-xs-right">
@@ -48,7 +51,7 @@ class MovieIndex extends Component {
 					</tr>
 				</thead>
 				<tbody>
-					{this.props.movies.map(this.renderPosts)}
+					{this.props.movies.map((movie, index) => this.renderPosts(movie, index) )}	
 				</tbody>
 			</table>
 			</div>
@@ -57,7 +60,9 @@ class MovieIndex extends Component {
 }
 
 function mapStateToProps(state) {
-	return { movies: state.movies.all };
+	return { 
+		movies: state.movies.all
+	};
 }
 
-export default connect(mapStateToProps, { fetchMovies })(MovieIndex);
+export default connect(mapStateToProps, { getMovie })(MovieIndex);

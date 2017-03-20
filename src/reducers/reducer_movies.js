@@ -1,4 +1,5 @@
-import { FETCH_MOVIES, FETCH_MOVIE, GET_MOVIE_LIST, GET_MOVIE, LOG_MOVIE } from '../actions/index';
+import _ from "lodash";
+import { FETCH_MOVIES, GET_MOVIE_LIST, GET_MOVIE, CREATE_MOVIE } from '../actions/index';
 
 const initialState = { all: [], movie: null, search: null };
 
@@ -12,22 +13,18 @@ export default function(state = initialState, action) {
 				search: action.payload
 			};
 		case GET_MOVIE:
-			console.log('this is after promise',action.payload);
+			//console.log('this is after promise',action.payload);
+			//return merge({}, state, {movie: action.payload});
 			return {
 				all: state.all,
 				movie: action.payload,
 				search: null
 			};
-		case LOG_MOVIE:
+		case CREATE_MOVIE:
+		//console.log('create movie payload: ',action.payload);
 			return {
-				all: state.all.concat(action.payload.data),
-				movie: null,
-				search: null
-			};
-		case FETCH_MOVIE:
-			return {
-				all: state.all,
-				movie: action.payload.data,
+				all: _.concat(state.all,[action.payload]),
+				movie: action.payload,
 				search: null
 			};
 		case FETCH_MOVIES:
