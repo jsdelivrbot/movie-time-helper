@@ -21,12 +21,6 @@ export default function(state = initialState, action) {
 				movie: null,
 				search: null
 			};
-
-			return {
-				all: _.remove(newArray, (index) => index != idIndex),
-				movie: null,
-				search: null
-			};
 		case GET_MOVIE_LIST:
 		//console.log('this is after promise',action.payload);
 			return {
