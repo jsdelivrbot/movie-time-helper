@@ -18,10 +18,18 @@ class SearchBar extends Component {
 		}); 
 	}
 
+	canBeSubmitted() {
+		const {term} = this.state;
+		return (
+			term.length > 0
+		);
+	}
+
 	onFormSubmit(event) {
 		event.preventDefault();
-
-		// go get weather data
+		if (!this.canBeSubmitted()){	
+			return;
+		}
 		this.props.getMovieList(this.state.term);
 		this.setState({
 			term: ''
@@ -29,6 +37,7 @@ class SearchBar extends Component {
 	}
 
 	render() {
+		const isEnabled = this.canBeSubmitted();
 		return (
 			<form onSubmit={this.onFormSubmit} className="input-group">
 				<input 
@@ -38,7 +47,12 @@ class SearchBar extends Component {
 					onChange={this.onInputChange}
 				/>
 				<span className="input-group-btn">
-					<button type="submit" className="btn btn-secondary">Submit</button>
+					<button 
+					type="submit" 
+					className="btn btn-secondary"
+					disabled={!isEnabled}>
+					Submit
+					</button>
 				</span>
 			</form>
 		);

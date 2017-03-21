@@ -8,13 +8,6 @@ class MovieDetails extends Component {
 		this.props.getMovie(this.props.params.id);
 	}
 
-	//onDeleteClick() {
-	//	this.props.deletePost(this.props.params.id)
-	//		.then(() => {
-	//			this.context.router.push('/');
-	//		});
-	//}
-
 	onSaveClick() {
 		console.log(this.props.movie.imdbID);
 		this.props.createMovie(this.props.movie.imdbID);
@@ -33,26 +26,20 @@ class MovieDetails extends Component {
 					onClick={this.onSaveClick.bind(this)}>
 					Save Movie
 				</button>
-				{//<button> 
-				//	className="btn btn-danger pull-xs-right"
-				//	onClick={this.onDeleteClick.bind(this)}>
-				//	Delete Post
-				//</button>
-				}
 				<table className="table table-hover">
-						<tbody>
-						<tr>
-							<td> 
-								<img src={this.props.movie.Poster} />
-							</td>
-							<td>
-								<div>Title: {this.props.movie.Title}</div>
-								<div>Genre: {this.props.movie.Genre.map((x, index) => <text key={index}> {x}, </text>)}</div>
-								<div>Director(s): {this.props.movie.Director.map((x, index) => <text key={index}> {x}, </text>)}</div>	
-								<div>IMDB Rating: {this.props.movie.imdbRating}</div>
-							</td>
-						</tr>
-						</tbody>
+					<tbody>
+					<tr>
+						<td> 
+							<img src={this.props.movie.Poster} />
+						</td>
+						<td>
+							<div>Title: {this.props.movie.Title}</div>
+							<div>Genre: {this.props.movie.Genre.map((x, index) => <text key={index}> {x}, </text>)}</div>
+							<div>Director(s): {this.props.movie.Director.map((x, index) => <text key={index}> {x}, </text>)}</div>	
+							<div>IMDB Rating: {this.props.movie.imdbRating}</div>
+						</td>
+					</tr>
+					</tbody>
 				</table>
 				<table>
 					<tbody>

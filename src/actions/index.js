@@ -7,7 +7,6 @@ export const GET_MOVIE_LIST = 'GET_MOVIE_LIST';
 export const GET_MOVIE = 'GET_MOVIE';
 export const CREATE_MOVIE = 'CREATE_MOVIE';
 
-
 export function getMovieList(term){
 	const request = omdb.search({
     search: term 
@@ -47,17 +46,18 @@ export function createMovie(id) {
     plot: 'full',
     tomatoes: 'true' 
   });
-	console.log('i got to create movie', request);
 	return {
 		type: CREATE_MOVIE,
 		payload: request
 	};
 }
 
-
 export function deleteMovie(id) {
-	const request = id;
-
+	const request = omdb.get({
+    id: id,
+    plot: 'full',
+    tomatoes: 'true' 
+  });
 	return {
 		type: DELETE_MOVIE,
 		payload: request

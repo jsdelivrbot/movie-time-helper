@@ -5,9 +5,15 @@ import { createMovie } from '../actions/index';
 
 class SearchResults extends Component {
 
-	renderPosts(movieData) {
+	renderPosts(movieData, index) {
 		return (
-				<tr key={movieData.imdbID}>
+				<tr key={movieData.imdbID + index}>
+					<td>
+						<button className="btn btn-primary"
+							onClick={() => this.props.createMovie(movieData.imdbID)}>
+							+
+						</button> 
+					</td>
 					<td><img src={movieData.Poster} /></td>
 					<td>{movieData.Title}</td>
 					<td>{movieData.Year}</td>
@@ -27,6 +33,7 @@ class SearchResults extends Component {
 					<table className="table table-hover">
 						<thead>
 							<tr>
+								<th> + </th>
 								<th>Movie Poster</th>
 								<th>Movie Title</th>
 								<th>Year Created</th>
@@ -34,7 +41,7 @@ class SearchResults extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{this.props.movies.map(this.renderPosts.bind(this))}
+							{this.props.movies.map((movie, index) => this.renderPosts(movie, index))}
 						</tbody>
 					</table>
 				</div>
